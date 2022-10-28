@@ -1,0 +1,62 @@
+﻿@model IEnumerable<fantaysWeb.Models.donHang>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/layout/navbar.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Ten khach hang
+        </th>
+        <th>
+            Dia chi
+        </th>
+        <th>
+            Ngay dat hang
+        </th>
+        <th>
+            So dien thoai
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                <a href="~/Sevice/listChiTiet?idKH=@item.ID" style="color: blueviolet;">@item.TenKH</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiaChi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoDt)
+            </td>
+            <td style="display:flex;">
+                <a href="#" onclick="deleteid(@item.ID)" style="color:blueviolet;width:49%;border:none;outline:none">xoa</a>
+                <a href="~/Sevice/Update?idKH=@item.ID" style="color:blueviolet;width:49%;border:none;outline:none">update</a>
+            </td>
+        </tr>
+    }
+
+</table>
+@section js{
+    <script>
+        var deleteid = (id) => {
+            if (confirm("you sur") == true) {
+                location.href = "/Sevice/Delete?idKH=" + id;
+            }
+        }
+    </script>
+}

@@ -1,0 +1,39 @@
+﻿@model fantaysWeb.Models.donHang
+@{
+    ViewBag.Title = "listChiTiet";
+    Layout = "~/Views/layout/navbar.cshtml";
+    ViewBag.idTR = Model.ID;
+    
+}
+<div style="display:flex;justify-content:space-between;align-content:flex-start;">
+    <div style="width:40%;display:flex;flex-wrap:wrap;">
+        <h3 style="width:100%;">@Model.TenKH</h3>
+        <p style="width:100%;">@Model.DiaChi</p>
+        <p style="width:100%;">@Model.SoDt</p>
+        <p style="width:100%;">@Model.NgayDat</p>
+        <a href="~/Sevice/ThemChiTiet?idKH=@Model.ID" style="color:darkslateblue">them chi tiet </a>
+    </div>
+    <div style="width:60%;">
+            @foreach (var i in Model.ChitietDH)
+            {
+               <div style="display:flex;flex-wrap:nowrap;align-content:center;color:blueviolet;">
+                   <div style="width:20%"><p>Ten : @i.Name</p></div>
+                   <div style="width:20%"><p>Gia : @i.Gia</p></div>
+                   <div style="width:20%"><p>ID : @i.ID</p></div>
+                   <div style="width:20%"><a href="~/Sevice/UpdateChiTiet?idKH=@Model.ID&idTR=@i.ID">update</a></div>
+                   <div style="width:20%"></div>
+               </div>
+            }
+
+    </div>
+</div>
+ @section js{
+     <script>
+         var deleteid = (idKH,idTR) => {
+             if (confirm("you sur") == true) {
+                 location.href = "/Sevice/DeleteChiTiet?idKH=" + idKH + "&idTR=" + idTR;
+             }
+         }
+     </script>
+     
+     }

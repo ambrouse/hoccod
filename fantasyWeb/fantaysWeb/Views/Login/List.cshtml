@@ -1,0 +1,59 @@
+﻿@model IEnumerable<fantaysWeb.Models.KhachHang>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/layout/navbar.cshtml";
+}
+
+<h2>List</h2>
+
+<a href="~/Login/Them" style="color:black">new create</a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiKhachHang.TenLoaiKH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoDT)
+        </td>
+        <td>
+            @if (item.LoaiKhachHang != null)
+            {
+                @item.LoaiKhachHang.TenLoaiKH;
+            }
+
+        </td>
+        <td>
+            <a href="~/Login/Update/@item.ID">update</a>
+            <a href="#" onclick="deleteid(@item.ID)">delete</a>
+           
+        </td>
+    </tr>
+}
+
+</table>
+@section js{
+    <script>
+        var deleteid = (id) => {
+            if (confirm("xoa chu") == true) {
+                location.href = "/Login/Delete/" + id;
+            }
+        }
+    </script>
+    
+    }

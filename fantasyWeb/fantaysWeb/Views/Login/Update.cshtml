@@ -1,0 +1,20 @@
+﻿@model fantaysWeb.Models.KhachHang
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/layout/navbar.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update","Login",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.ID)
+        <input type="text" value="@Model.ID" name="ID"/>
+        <input type="text" value="@Model.TenKH" name="TenKH"/>
+        <input type="text" value="@Model.SoDT" name="SoDT"/>
+        <input type="number" value="@Model.IDKH"||"null" name="idKH"/>
+        <button type="submit">update</button>
+}

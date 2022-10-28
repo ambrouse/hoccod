@@ -1,0 +1,33 @@
+﻿@model IEnumerable<fantaysWeb.Models.LoaiKhachHang>
+
+@{
+    ViewBag.Title = "ListLoaiKH";
+    Layout = "~/Views/layout/navbar.cshtml";
+}
+
+<h2>ListLoaiKH</h2>
+
+<a href="~/Login/ThemLoaiKH">new create</a>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Ten loai khach hang
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLoaiKH)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,19 @@
+﻿@model fantaysWeb.Models.SinhVien
+
+@{
+    ViewBag.Title = "Them";
+    Layout = "~/Views/layout/navbar.cshtml";
+}
+@using (Html.BeginForm("Them","About",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @id = "err" ,@style = "display:block;"})
+    <hr />
+    <input type="number" name="Id" value="0" placeholder="ID" />
+    <input type="text" name="Name" placeholder="Name" />
+    <input type="number" name="Age" placeholder="Age" />
+    <input type="text" name="MaLop" placeholder="Ma lop" />
+    <button type="submit">luu</button>
+
+
+}

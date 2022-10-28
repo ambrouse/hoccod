@@ -1,0 +1,60 @@
+﻿@model IEnumerable<fantaysWeb.Models.SinhVien>
+
+@{
+    ViewBag.Title = "ListSinhVien";
+    Layout = "~/Views/layout/navbar.cshtml";
+}
+<table class="table" cellpadding="10" border="2">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Age
+        </th>
+        <th>
+            Ma Lop
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaLop)
+            </td>
+            <td style="color:red;
+                    display:flex;
+                    border: none;
+                    outline:none;">
+                <a style="color:red;width:30%" href="#">|edit|</a>
+                <a style="color: red; width: 30%" href="#"
+                   onclick="createDelete(@item.Id)">|delete|</a>
+                <a style="color: red; width: 30%" href="~/About/Update?id=@item.Id">|update|</a>
+            </td>
+        </tr>
+    }
+
+</table>
+@section js{
+    <script>
+        var createDelete = function(id){
+            if (confirm("you sure") == true) {
+                location.href = "/About/Delete?id=" + id;
+            }
+        }
+    </script>
+} 

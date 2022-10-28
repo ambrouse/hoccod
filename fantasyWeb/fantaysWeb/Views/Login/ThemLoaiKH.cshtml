@@ -1,0 +1,21 @@
+﻿@model fantaysWeb.Models.LoaiKhachHang
+
+@{
+    ViewBag.Title = "ThemLoaiKH";
+    Layout = "~/Views/layout/navbar.cshtml";
+}
+
+<h2>ThemLoaiKH</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <input type="number" name="ID"/>
+        <input type="text" name="TenLoaiKH"/>
+        <button type="submit">create</button>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
