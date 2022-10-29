@@ -1,0 +1,147 @@
+/* http://meyerweb.com/eric/tools/css/reset/ */
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+body{
+    max-width: 1440px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.267);
+}
+.card{
+    display: grid;
+    grid-template-columns:  1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 50px;
+    @media screen and (max-width:700px){
+        &{
+            grid-template-columns:  1fr 1fr ;
+            grid-template-rows: 1fr 1fr;
+            column-gap: 10px;
+            row-gap: 30px;
+        }
+    }
+    @media screen and (max-width:1040px){
+        &{
+            column-gap: 20px;
+            row-gap: 50px;
+        }
+    }
+    &__item{
+        display: flex;
+        flex-direction: column;
+        height: 400px;
+        background-color: rgba(94, 97, 97, 0.411);
+        @media screen and (max-width:700px){
+           &{
+            height: 300px;
+           }
+        }
+        
+        
+        .img{
+            
+            height: 300px;
+            flex-shrink: 0;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            @media screen and (max-width:1040px){
+                &{
+                 height: 250px;
+                }
+             }
+            @media screen and (max-width:700px){
+                &{
+                    height: 150px;
+                }
+            }
+           
+        }
+        .name{
+           
+            margin-left: 20px;
+            height: 150px;
+            p{
+                font-size: 1.4rem;
+                margin-top: 10px;
+                line-height: 30px;
+            }
+            a{
+                line-height: 0px;
+                font-size: 1rem;
+                color: red;
+                text-decoration: none;
+            }
+        }
+        .price{
+            
+            margin-left: 20px;
+            height: 25px;
+            font-size: 1.2rem;
+            color: black;
+        }
+        .vote{
+            
+            margin-left: 20px;
+            height: 25px;
+            span{
+                float: right;
+            }
+            font-size: 1.2rem;
+            color: rgb(208, 255, 0);
+        }
+    }
+
+}
